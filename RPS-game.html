@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script>
+   function getComputerChoice(){
+    let x =Math.floor(Math.random()*2);
+    if(x==1)return "rock";
+    if(x==0)return "paper";
+    if(x==2)return "scissor";
+    }
+    function playRound(computerChoice,playerChoice){
+
+        let a =computerChoice.toLowerCase();
+        let b =playerChoice.toLowerCase();
+        if(a==b)return "Tie Game"
+      else{  if((a=='rock'&&b=='scissor')||(a=='paper'&&b=='rock')||(a=='scissor'&&b=='rock')){
+            return `You Lose! ${a} beats ${b}`;
+        }
+        else return `You Win! ${b} beats ${a}`;}
+    }
+    function game(){
+        let win =0;
+        for(let i =0;i<5;i++){
+          let b =  prompt("enter your choice");
+          let a = getComputerChoice();
+          
+          console.log(playRound(a,b));
+          if(playRound(a,b)==`You Win! ${b} beats ${a}`)win++;
+          
+        }
+        return win;
+    }
+  if ( game()>2)alert("You Win");
+  else alert("You Lose");
+
+        </script>
+    </body>
+</html>
