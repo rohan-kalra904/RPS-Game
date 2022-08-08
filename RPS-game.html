@@ -11,13 +11,71 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        <style>
+            button{
+                background-color:aqua;
+                display:flex;
+                flex-direction:row;
+                justify-content:center;
+                -ms-flex-align: center;
+                flex-basis: normal;
+            }
+            .new{
+                display:none;
+            }
+        </style>
     </head>
     <body>
+        
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
+        <h1><button class="start">Start</button></h1>
+        <div background-color:red>
+            <button class="rock">Rock</button>
+            <button class="paper">Paper</button>
+            <button class ="scissor" >Scissor</button>
+        </div>
+        <div class="result"></div>
         <script>
+            // const a =document.querySelector('.rock');
+            // const b =document.querySelector('.paper');
+            // const c =  document.querySelector('.scissor');
+            let pointsp=0;
+                    let pointsc =0;
+            const buttons = document.querySelectorAll('button');
+            const start = document.querySelector('.start');
+            let winp =0;
+            let winc =0;
+
+            buttons.forEach((button)=>
+            {
+                button.addEventListener('click',()=>{
+                    let a =button.className;
+
+                    console.log(button.className);
+                  let b = getComputerChoice();
+                    let res =playRound(a,b);
+                        console.log(b);
+                        console.log(res);
+                    if(res==`You Win! ${b} beats ${a}`)winp++;
+                   else if(res==`You Lose! ${a} beats ${b}`)winc++;
+             console.log(winp);
+             console.log(winc);
+
+             if(winc==5||winp==5){console.log("game over");
+             const container = document.querySelector('.result');
+
+const content = document.createElement('div');
+content.classList.add('content');
+content.textContent = `The game is over ${winp} ${winc}`;
+
+container.appendChild(content);
+}
+
+                });
+            });
+            if(winc==5||winp==5)console.log(`game over ${winp} ${winc}`);
    function getComputerChoice(){
     let x =Math.floor(Math.random()*2);
     if(x==1)return "rock";
@@ -34,20 +92,20 @@
         }
         else return `You Win! ${b} beats ${a}`;}
     }
-    function game(){
-        let win =0;
-        for(let i =0;i<5;i++){
-          let b =  prompt("enter your choice");
-          let a = getComputerChoice();
+//     function game(){
+//         let win =0;
+//         for(let i =0;i<5;i++){
+//           let b =  prompt("enter your choice");
+//           let a = getComputerChoice();
           
-          console.log(playRound(a,b));
-          if(playRound(a,b)==`You Win! ${b} beats ${a}`)win++;
+//           console.log(playRound(a,b));
+//           if(playRound(a,b)==`You Win! ${b} beats ${a}`)win++;
           
-        }
-        return win;
-    }
-  if ( game()>2)alert("You Win");
-  else alert("You Lose");
+//         }
+//         return win;
+//     }
+//   if ( game()>2)alert("You Win");
+//   else alert("You Lose");
 
         </script>
     </body>
